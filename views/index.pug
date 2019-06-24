@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  h1 Manage Employee Benefits
+  div.row
+
+    div.col-9
+      a.btn.btn-info(href='/accrue-monthly-points') Trigger Monthly Points Accrue
+      p
+      p Employee Points
+      table.table
+        thead
+          th Name
+          th Employee ID
+          th Start Date
+          th Seniority
+          th Total Points Accrued
+        tbody
+          each employee in employees
+            tr
+              td= employee.name
+              td= employee.employeeID
+              td= employee.startDate
+              td= employee.seniority
+              td= employee.totalPoints
+
+    div.col
+      h3 Register Employee
+      form(method='POST' action='/register-employee')
+        div.form-group
+          label(for='name') Name:
+          input#name.form-control(type='text', placeholder='first and last' name='name', required='true')
+        div.form-group
+          label(for='id') ID:
+          input#email.form-control(type='number', placeholder='1' name='id', required='true')
+        div.form-group
+          label(for='startDate') Start Date:
+          input#favoriteBook.form-control(type='date', placeholder='start Date' name='startDate', required='true')
+        div.form-group
+          label(for='Seniority', required='true') Seniority:
+          select.custom-select.form-control(type='' name='seniority')
+            option A
+            option B
+            option C
+            option D
+            option E
+        button.btn.btn-primary(type='submit') Register
